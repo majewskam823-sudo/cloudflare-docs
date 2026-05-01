@@ -1,6 +1,6 @@
 ---
 pcx_content_type: reference
-description: Use post-quantum cryptography with Cloudflare One Client and Cloudflare Tunnel.
+description: Use post-quantum cryptography with Cloudflare One products including Agentless Access, Cloudflare One Client, Mesh, Gateway, and IPsec.
 products:
   - ssl
 title: Post-quantum cryptography in Cloudflare One
@@ -13,11 +13,11 @@ tags:
 
 [Cloudflare One](/cloudflare-one/) replaces legacy corporate security perimeters with Cloudflare's global network, making access to the Internet and to corporate resources faster and safer for teams around the world.
 
-Organizations can obtain end-to-end post-quantum encryption of their private network traffic by sending it over Cloudflare One's post-quantum on-ramps and off-ramps. This protects traffic with post-quantum encryption to prevent [harvest-now, decrypt-later](https://en.wikipedia.org/wiki/Harvest_now,_decrypt_later) attacks, even if the individual applications are not yet upgraded to post-quantum encryption. In a harvest-now, decrypt-later attack, an adversary harvests data now and decrypts it in the future, when more powerful quantum computers come online.
+Organizations can obtain end-to-end post-quantum encryption of their private network traffic by sending it over Cloudflare One's post-quantum on-ramps and off-ramps. This protects traffic against [harvest-now, decrypt-later](https://en.wikipedia.org/wiki/Harvest_now,_decrypt_later) attacks even if the individual applications are not yet upgraded to post-quantum encryption.
 
 Post-quantum encryption is offered in all major Cloudflare One network configurations, including the following on-ramps:
 
-- Clientless (browser-only)
+- Agentless (browser-only)
 - [Cloudflare One Client](/cloudflare-one/team-and-resources/devices/cloudflare-one-client/) (on the end-user device)
 - [Cloudflare IPsec](/cloudflare-wan/reference/gre-ipsec-tunnels/) on-ramp
 
@@ -28,11 +28,11 @@ And off-ramps:
 
 For traffic that egresses to the public Internet, [Cloudflare Gateway](/cloudflare-one/traffic-policies/http-policies/) also provides post-quantum encryption as a Secure Web Gateway (SWG).
 
-All of these network configurations use the post-quantum key agreement algorithm ML-KEM-768 deployed alongside classical Elliptic Curve Diffie-Hellman (ECDH), where the symmetric key used to encrypt network traffic is derived by mixing the results of the ML-KEM key agreement and the ECDH key agreement. This is also known as hybrid ML-KEM. In this hybrid approach, ML-KEM provides protection against quantum harvest-now, decrypt-later attacks, while ECDH provides protection against non-quantum adversaries.
+These on-ramps and off-ramps all use [hybrid post-quantum key agreement](/ssl/post-quantum-cryptography/#hybrid-key-agreement).
 
 ![Overview diagram of post-quantum Cloudflare One network configurations showing on-ramps and off-ramps](~/assets/images/ssl/pqc-cloudflare-one-overview.png)
 
-The following sections describe a few network configurations in detail.
+The sections below describe a few common network configurations in detail. For the broader status of post-quantum support across all Cloudflare products and connections, refer to [PQC in Cloudflare products](/ssl/post-quantum-cryptography/pqc-cloudflare-products/).
 
 ## Agentless Cloudflare Access
 
